@@ -19,7 +19,7 @@ const StyledChar = styled.div`
   margin-top: 6%;
   padding: 0.5%;
   padding-top: 0%;
-  padding-bottom: 8%;
+  padding-bottom: 4%;
 
   img {
     width: 50%;

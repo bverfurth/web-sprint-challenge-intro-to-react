@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Character from "./components/Character.js";
 import styled from "styled-components";
 import axios from "axios";
-import logo from "./images/tv-show-rick-and-morty-rick-sanchez-hd-wallpaper-thumb.jpg";
+import logo from "./images/rick-and-morty-theme-ct9.jpg";
 import "./App.css";
 
 const App = () => {
@@ -27,8 +27,7 @@ const App = () => {
   }, []);
 
   const StyledImg = styled.img`
-    margin: 0 auto;
-    padding-top: 10%;
+    padding-top: 6%;
     width: 50%;
   `;
   const StyledH1 = styled.h1`
@@ -37,7 +36,7 @@ const App = () => {
     font-family: Creepster;
     background-color: black;
     padding: 2rem;
-    width: 100%;
+    max-width: 100%;
     font-size: 3rem;
     margin-bottom: 50px;
   `;
@@ -47,7 +46,7 @@ const App = () => {
       <StyledH1>
         <iframe
           src="https://giphy.com/embed/da0NgyClHpA4jqUoav"
-          width="480"
+          width="50%"
           height="370"
           frameBorder="0"
           class="giphy-embed"
