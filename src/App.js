@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Characters from "./components/Characters.js";
+import Character from "./components/Character.js";
+import styled from "styled-components";
 import axios from "axios";
+import logo from "./images/tv-show-rick-and-morty-rick-sanchez-hd-wallpaper-thumb.jpg";
 import "./App.css";
 
 const App = () => {
@@ -11,20 +13,54 @@ const App = () => {
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
 
-  const [characterList, setCharacterList] = useState([]);
+  const [character, setCharacter] = useState([]);
 
   useEffect(() => {
     axios
-      .get("https://swapi.dev/api/people")
-      .then(({ data }) => {
-        setCharacterList(data);
+      .get("https://rickandmortyapi.com/api/character")
+      .then((success) => {
+        console.log("success", success);
+        setCharacter(success.data.results);
       })
-      .catch((err) => console.log(err));
+
+      .catch((fail) => console.log("get fail", fail));
   }, []);
 
+  const StyledImg = styled.img`
+    margin: 0 auto;
+    padding-top: 10%;
+    width: 50%;
+  `;
+  const StyledH1 = styled.h1`
+    color: #fffff0;
+    padding: 0.3rem;
+    font-family: Creepster;
+    background-color: black;
+    padding: 2rem;
+    width: 100%;
+    font-size: 3rem;
+    margin-bottom: 50px;
+  `;
   return (
     <div className="App">
-      <h1 className="Header">Characters</h1>
+      <StyledImg img src={logo} />
+      <StyledH1>
+        <iframe
+          src="https://giphy.com/embed/da0NgyClHpA4jqUoav"
+          width="480"
+          height="370"
+          frameBorder="0"
+          class="giphy-embed"
+          allowFullScreen
+        ></iframe>
+        <p>
+          <a href="https://giphy.com/stickers/rickandmorty-season-4-episode-rick-and-morty-da0NgyClHpA4jqUoav"></a>
+        </p>
+        Lets Meet The Crew!
+      </StyledH1>
+      {character.map((char) => (
+        <Character key={char.id} character={char} />
+      ))}
     </div>
   );
 };
